@@ -1,0 +1,11 @@
+base.htmlのカード部分
+
+最下部固定フッター
+body,#wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+footer{
+    margin-top: auto;
+}

@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>AWASE | 第一印象で減点されない似合うを探す</title>
+
+<!--  bootstrap core CSS  -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<!-- mystyle CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
+</head>
+
+<body>
+<nav>
+     {% if user.is_authenticated %}
+<!--  umi navbar login  -->
+        <div class="bs-component">
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+              <a class="navbar-brand" href="{% url 'booking:store_list' %}">AWASE</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">検索</button>
+                </form>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarColor02">
+                  <ul class="navbar-nav" >
+                    <li class="nav-item　float-right" >
+                      <a class="nav-link" href="{% url 'booking:my_page' %}" >マイページ</a>
+                    </li>
+                    <li class="nav-item　float-right">
+                      <a class="nav-link" href="#">リンク</a>
+                    </li>
+                    <li class="nav-item　float-right">
+                      <a class="nav-link" href="#">リンク</a>
+                    </li>
+                   <li class="nav-item　float-right">
+                      <a class="nav-link" href="{% url 'booking:logout' %}">ログアウト</a>
+                    </li>
+                  </ul>
+            </div>
+          </nav>
+        </div>
+     {% else %}
+<!--  umi navbar not sign in -->
+    <div class="bs-component">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="{% url 'booking:store_list' %}">AWASE</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">検索</button>
+            </form>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarColor02">
+              <ul class="navbar-nav" >
+                <li class="nav-item　float-right">
+                  <a class="nav-link" href="#">会員登録</a>
+                </li>
+                <li class="nav-item　float-right">
+                  <a class="nav-link" href="{% url 'booking:login' %}">ログイン</a>
+                </li>
+              </ul>
+        </div>
+      </nav>
+    </div>
+     {% endif %}
+<!-- umi navbar css -->
+<style>
+    .navbar-nav{
+    text-align: right;
+    }
+</style>
+</nav>
+
+{% for message in messages %}
+    <p> {{ message }}</p>
+{% endfor %}
+
+{% block content %}{% endblock %}
+
+<!-- フッター -->
+<footer class="py-5 bg-primary">
+    <div class="container">
+        <p class="m-0 text-center text-white small">Copyright &copy; AWASE</p>
+    </div>
+</footer>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{% static 'js/holder.min.js' %}"></script>
+<!-　bootstrap core js -->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

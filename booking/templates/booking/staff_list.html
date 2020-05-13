@@ -1,0 +1,193 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container px-3 py-3">
+
+  <!--　タイトル　-->
+  <div class="row my-3">
+
+      <!-- 左カラム -->
+      <div class="col-lg-8 row page-header">
+          <div class="container">
+              <div class="row d-flex align-items-center">
+                  <div class="col-lg-10 px-3">
+                    <!--TODO 先頭に入る文字次第でかなり長い文になるので、控えめにh2-->
+                      <h2 class="text-left text-success">{{ store.name }}のスタイリスト検索</h2>
+                  </div>
+                  <div class="col-lg-2 px-3">
+                      <a href= "TODO.html">&#9656;エリア変更</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- 右カラム -->
+      <div class="col-lg-4">
+        <!-- 何も表示しない。スペース確保のためのdiv。 -->
+      </div>
+
+  </div>
+
+  <!-- 本文 --->
+  <div class="row my-3">
+
+      <!-- 左カラム -->
+      <div class="col-lg-8">
+
+        <!-- cards area -->
+          <div class="login-container">
+
+              <!-- タイトル -->
+              <h6 class="text-left">スタイリストを選択してください。</h6>
+    <ul style="list-style: none;">
+        {% for staff in staff_list %}
+            <li>
+                <a href="{% url 'booking:calendar' staff.pk %}">{{ staff.name }}</a></li>
+        {% empty %}
+            <li>まだスタッフがいません。</li>
+        {% endfor %}
+    </ul>
+              <!--各種入力フォーム-->
+<!--              <div class="container my-3">-->
+<!--                  <div class="row">-->
+
+<!--                      &lt;!&ndash; 左カラム &ndash;&gt;-->
+<!--                      <div class="col-lg-6 px-3 text-left">-->
+<!--                        &lt;!&ndash; TODO この辺のidやvalueはよしなにしてください &ndash;&gt;-->
+
+<!--                        &lt;!&ndash; 日付選択 &ndash;&gt;-->
+<!--                        <div class="mb-3">-->
+<!--                          <div class="form-check form-check-inline mb-1">-->
+<!--                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">-->
+<!--                            <label class="form-check-label" for="inlineRadio1">今日</label>-->
+<!--                          </div>-->
+<!--                          <div class="form-check form-check-inline mb-1">-->
+<!--                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">-->
+<!--                            <label class="form-check-label" for="inlineRadio2">明日</label>-->
+<!--                          </div><br/>-->
+<!--                          <button type="submit" class="btn btn-outline-secondary px-5 mb-1">日付指定</button>-->
+<!--                          &lt;!&ndash; TODO ちょっと気になったんだけど、ボタンを押して選んだ日付を表示する欄は要らない？ &ndash;&gt;-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash; 時刻選択 &ndash;&gt;-->
+<!--                        <div class="form-check form-check-inline mb-3">-->
+<!--                            <span class="px-1">開始時刻</span>-->
+<!--                            <input type="text" class="form-control" id="inputTime" style="width:70px;">-->
+<!--                            <span class="px-1">～</span>-->
+<!--                        </div>-->
+
+<!--                      </div>-->
+
+<!--                      &lt;!&ndash; 右カラム &ndash;&gt;-->
+<!--                      <div class="col-lg-6 px-3 text-left">-->
+
+<!--                        &lt;!&ndash; 性別選択 &ndash;&gt;-->
+<!--                        <div class="row mb-3">-->
+<!--                            <div class="px-3">-->
+<!--                              性別-->
+<!--                            </div>-->
+<!--                            <div class="px-3 mb-3">-->
+<!--                              <div class="form-check form-check-inline mb-1">-->
+<!--                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">-->
+<!--                                <label class="form-check-label" for="inlineRadio3">男性</label>-->
+<!--                              </div>-->
+<!--                              <div class="form-check form-check-inline mb-1">-->
+<!--                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">-->
+<!--                                <label class="form-check-label" for="inlineRadio4">女性</label>-->
+<!--                              </div></br>-->
+<!--                              <div class="form-check form-check-inline mb-1">-->
+<!--                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">-->
+<!--                                <label class="form-check-label" for="inlineRadio5">指定なし</label>-->
+<!--                              </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
+<!--                        &lt;!&ndash; 予算選択 &ndash;&gt;-->
+<!--                        <div class="row mb-3 d-flex align-items-center">-->
+<!--                            <div class="px-3">-->
+<!--                              当日の予算-->
+<!--                            </div>-->
+<!--                            <div class="form-check form-check-inline">-->
+<!--                                <input type="text" class="form-control" id="inputMinCost" style="width:80px;">-->
+<!--                                <span class="px-1">～</span>-->
+<!--                                <input type="text" class="form-control" id="inputMaxCost" style="width:80px;">-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                      </div>-->
+<!--                  </div>-->
+<!--              </div>-->
+<!--              <button type="submit" class="btn btn-success px-5 my-3">指定した条件で探す</button>-->
+          </div>
+      </div>
+
+      <!-- 右カラム -->
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <div class="py-5 bg-secondary text-white text-center" style="height:100%;">
+            <p>[TODO:ここに何かを挿入する。]</p>
+            <p>ここのdivはスペース確保のために適当に作ったやつ</p>
+            <p>後で消す。</p>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+
+
+
+</div>
+
+<!-- card css -->
+<style>
+html,body{
+    position: relative;
+    height: 100%;
+}
+.login-container{
+    position: relative;
+    width: auto;
+    margin: 0px auto;
+    padding: 20px 40px 40px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+.login-container::before,.login-container::after{
+    content: "";
+    position: absolute;
+    width: 100%;height: 100%;
+    top: 3.5px;left: 0;
+    background: #fff;
+    z-index: -1;
+    -webkit-transform: rotateZ(4deg);
+    -moz-transform: rotateZ(4deg);
+    -ms-transform: rotateZ(4deg);
+    border: 1px solid #ccc;
+
+}
+.login-container::after{
+    top: 5px;
+    z-index: -2;
+    -webkit-transform: rotateZ(-2deg);
+     -moz-transform: rotateZ(-2deg);
+      -ms-transform: rotateZ(-2deg);
+}
+
+</style>
+
+<!-- style -->
+<style>
+
+.page-header {
+    padding: .5rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ccc;
+}
+
+</style>
+
+{% endblock %}
